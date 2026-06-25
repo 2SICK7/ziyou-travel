@@ -41,10 +41,6 @@ export interface GeneratedRoute {
   routeDescription: string;
 }
 
-const CITY_CENTER_ATTRACTIONS = ['leitai', 'museum', 'confucian'];
-const OUTDOOR_ATTRACTIONS = ['tianti', 'baita', 'desert'];
-const CULTURAL_ATTRACTIONS = ['jiujiang'];
-const FOOD_ATTRACTIONS = ['nightmarket'];
 
 const getPersonalityLabel = (preferences: string[], budgetLevel: BudgetLevel): string => {
   const preferenceLabels: Record<string, string> = {
@@ -96,7 +92,7 @@ const getRouteTags = (preferences: string[], days: number): string[] => {
 const generateDayPlan = (
   day: number,
   themes: { morning?: string; noon?: string; afternoon?: string; evening?: string },
-  budget: BudgetAnalysis
+  _budget: BudgetAnalysis
 ): DailyPlan => {
   const slotData: Record<string, { activity: string; tips: string; duration: string }> = {
     morning: { activity: '开启凉州之旅', tips: '建议早起错峰，8点前到达景区', duration: '2-3小时' },
@@ -305,7 +301,7 @@ export const generateRoute = (
   };
 };
 
-function calculateBreakdown(budget: number, days: number) {
+function calculateBreakdown(budget: number, _days: number) {
   const level = budget < 600 ? '经济' : budget < 1500 ? '舒适' : '高级';
   let hotelRatio: number, foodRatio: number, ticketRatio: number, transportRatio: number, backupRatio: number;
 

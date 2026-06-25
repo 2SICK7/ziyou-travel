@@ -34,7 +34,7 @@ const getPressureIndex = (budget: number, days: number): '轻松' | '合理' | '
 export const calculateBudget = (
   totalBudget: number,
   days: number,
-  preferences: string[]
+  _preferences: string[]
 ): BudgetAnalysis => {
   const level = getBudgetLevel(totalBudget);
   const pressureIndex = getPressureIndex(totalBudget, days);
